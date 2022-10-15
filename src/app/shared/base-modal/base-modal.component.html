@@ -1,0 +1,64 @@
+<!-- Auth Modal -->
+<!-- We can add the [ngClass]="" directive with property binding to help us. -->
+<!-- Hangi modal'a göre işlem yapacağımız bilgisi modal'ların kendisinden modalID olarak gelecek. -->
+<!-- !modalService.isModalOpen(modalID) -->
+
+<div class="fixed z-50 inset-0 overflow-y-auto" id="modal" [ngClass]="{ hidden: !modalService.isModalOpen(modalID) }">
+
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center 
+        sm:block sm:p-0">
+        <!-- Modal BG Overlay -->
+        <!--
+            We could call the prevent default function from preventing the default behavior.
+            However, we're going to be applying our click listeners to div tags.
+            Clicks on div tags will not cause the browser to redirect the user to a different page.
+
+            Ayrıca boşluğa tıklandığında da kapansın istedik.
+        -->
+        <div class="fixed inset-0 transition-opacity" (click)="closeModal()">
+            <div class="absolute inset-0 bg-gray-800 opacity-75"></div>
+        </div>
+
+        <!-- This element is to trick the browser into centering the modal contents. -->
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+
+        <div class="inline-block align-bottom bg-secondary rounded-lg text-left overflow-hidden
+          shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+
+            <!-- Add margin if you want to see some of the overlay behind the modal-->
+            <div class="py-4 text-left px-6">
+                <!--Title-->
+                <div class="flex justify-between items-center pb-4">
+                    <!--ng-content-->
+                    <!--
+                    On this element, we will add a property called Select.
+                    The select property allows us to tell angular which elements to project into this slots.
+                    The value for this property must be CSS string.
+                    We will select an attribute called 'heading'.
+                    In CSS, we can select attributes by rapping the name of the attribute with square brackets.
+                    If an element has this attribute, it'll be inserted into this 'ng-content-element'.
+                -->
+                    <ng-content select="[heading]"></ng-content>
+                    <!--ng-content-->
+
+                    <!-- Modal Close Button -->
+                    <!--
+                        We could call the prevent default function from preventing the default behavior.
+                        However, we're going to be applying our click listeners to div tags.
+                        Clicks on div tags will not cause the browser to redirect the user to a different page.
+                    -->
+                    <div class="modal-close cursor-pointer z-50" (click)="closeModal()">
+                        &#x2715;
+                    </div>
+                     <!-- Modal Close Button -->
+                </div>
+
+                <!--ng-content-->
+                <ng-content></ng-content>
+                <!--ng-content-->
+
+            </div>
+        </div>
+    </div>
+
+</div>

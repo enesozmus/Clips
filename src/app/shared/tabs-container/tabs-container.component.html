@@ -1,0 +1,21 @@
+<!--
+        If we look at the top of the template, we have an unordered list element.
+        This list contains 'the links' to the various tabs.
+        Therefore, the container 'needs to know how many tabs' are inside this component.
+-->
+
+<!-- Tabs -->
+<ul class="flex flex-wrap mb-4">
+    <li *ngFor="let tab of tabs" class="flex-auto text-center">
+        <a class="block rounded py-3 px-4 transition" (click)="selectTab(tab)" [ngClass]="{
+                'hover:text-indigo-400': !tab.active,
+                'hover:text-white text-white bg-indigo-400': tab.active }">
+            {{ tab.tabTitle}}
+        </a>
+    </li>
+</ul>
+<!-- Tabs -->
+
+<!-- <ng-content></ng-content> ile içerik taşınır. -->
+<ng-content></ng-content>
+<!-- <ng-content></ng-content> ile içerik taşınır. -->

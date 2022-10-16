@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { BaseModalComponent } from './base-modal/base-modal.component';
 import { TabsContainerComponent } from './tabs-container/tabs-container.component';
 import { TabComponent } from './tab/tab.component';
+import { InputComponent } from './input/input.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
+import { AlertComponent } from './alert/alert.component'
 
 
 
@@ -10,17 +16,23 @@ import { TabComponent } from './tab/tab.component';
   declarations: [
     BaseModalComponent,
     TabsContainerComponent,
-    TabComponent
+    TabComponent,
+    InputComponent,
+    AlertComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [
     // Çünkü dışarıda kullanmak istiyoruz.
     // We're exporting the component to make it accessible to other modules.
     BaseModalComponent,
     TabsContainerComponent,
-    TabComponent
+    TabComponent,
+    InputComponent,
+    AlertComponent
   ]
 })
 

@@ -4,7 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthModalComponent } from './auth-modal/auth-modal.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // ♫ CommonModule
 // ♫ Exports components, directives and pipes.
@@ -23,7 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, FormsModule
   ],
   exports: [
     // If we want to use this template in another module, we must also explicitly export variables, functions and objects.

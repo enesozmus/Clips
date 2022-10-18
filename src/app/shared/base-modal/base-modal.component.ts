@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ElementRef} from '@angular/core';
+import { Component, Input, OnInit, ElementRef, OnDestroy } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 
 /*
@@ -20,7 +20,7 @@ import { ModalService } from 'src/app/services/modal.service';
 
     We're exporting the component to make it accessible to other modules.
 */
-export class BaseModalComponent implements OnInit {
+export class BaseModalComponent implements OnInit, OnDestroy {
 
   /*
       We use an identity system.
@@ -31,13 +31,18 @@ export class BaseModalComponent implements OnInit {
   @Input() modalID = '';
 
   // Angular will manage our dependencies.
-  constructor(public modalService: ModalService, public elementRef: ElementRef) { 
+  constructor(public modalService: ModalService, public elementRef: ElementRef) {
     console.log(elementRef);
   }
 
   ngOnInit(): void {
     // CSS issues
-    document.body.appendChild(this.elementRef.nativeElement)
+    document.body.appendChild(this.elementRef.nativeElement);
+  }
+
+  ngOnDestroy(): void {
+    // CSS issues
+    document.body.removeChild(this.elementRef.nativeElement);
   }
 
   closeModal() {

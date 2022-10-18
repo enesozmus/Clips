@@ -6,15 +6,20 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AuthModule } from './auth/auth.module';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AuthModule
+    BrowserModule, AppRoutingModule,
+    AuthModule,
+    AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

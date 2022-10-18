@@ -262,5 +262,5 @@
 
   They should remain unaffected by parent elements.
 -->
-<app-auth-modal></app-auth-modal>
+<app-auth-modal *ngIf="!(authService.isAuthenticatedWithDelay$ | async)"></app-auth-modal>
 <!-- Auth Modal -->

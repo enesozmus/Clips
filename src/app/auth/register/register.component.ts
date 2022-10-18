@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import IUser from 'src/app/contracts/user';
+
+import { AuthService } from 'src/app/services/auth.service';
+
 
 /*
     'The FormGroup' object allows us to register a new form.
@@ -17,6 +21,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 export class RegisterComponent {
 
+  // After injecting this service, we can start using its methods.
+  constructor(private authService: AuthService) {
+
+  }
+
+  
   /*
       { } The instance has one argument, which is an object of configuration options.
       { } We can configure this object to help angular understand what's inside the form.
@@ -82,13 +92,33 @@ export class RegisterComponent {
   showAlert: boolean = false;
   alertMsg: string = 'Please wait! Your account is being created!';
   alertColor: string = 'blue';
+  inSubmission: boolean = false;
 
-  register() {
+
+  /*
+      The function should be asynchronous.
+      As noted in the documentation, the create user function will return a promise.
+  */
+  async register() {
     this.showAlert = true;
-    this.alertMsg = 'Please wait! Your account is being created!';
     this.alertColor = 'blue';
+    this.alertMsg = 'Please wait! Your account is being created!';
+    this.inSubmission = true;
+
+    const { email, password } = this.registerForm.value;
+
+    try {
+      await this.authService.registerUser(this.registerForm.value as IUser);
+    }
+    catch (err) {
+      this.alertColor = 'red';
+      this.alertMsg = 'An unexcepted error occurred. Please try again later!';
+      this.inSubmission = false;
+      console.log(err);
+      return;
+    }
+    this.alertColor = 'green';
+    this.alertMsg = 'Success! Your account has been created!';
   }
-
-
 
 }

@@ -15,7 +15,8 @@
                                         →  @Input() maskFormat = '';        → [mask]="maskFormat"
                                         
  -->
-<input [formControl]="control" [type]="type" [placeholder]="placeholder" [mask]="maskFormat" [dropSpecialCharacters]="true" class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500
+<input [formControl]="control" [type]="type" [placeholder]="placeholder" [mask]="maskFormat"
+    [dropSpecialCharacters]="true" class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500
     focus:outline-none rounded bg-transparent focus:border-indigo-400" />
 <!-- Errors -->
 <ng-container *ngIf="control.touched && control.dirty">
@@ -46,5 +47,13 @@
         1 lowercase letter, and 1 number.
     </p>
 
+    <p *ngIf="control.errors?.noMatch" class="text-red-400">
+        Passwords do not match.
+    </p>
+
+    <p *ngIf="control.errors?.emailTaken" class="text-red-400">
+        Email taken. Please try another email.
+    </p>
+    
 </ng-container>
 <!-- Errors -->

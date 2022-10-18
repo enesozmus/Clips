@@ -1,6 +1,7 @@
-## Clips
+## <img width="82" height="82" src="https://github.com/enesozmus/clips/blob/master/src/assets/forGitHub/ztm.jpg" alt="ztm"> Fundamentals <img width="82" height="82" src="https://github.com/enesozmus/clips/blob/master/src/assets/forGitHub/ztm.jpg" alt="ztm">
 
-## Fundamentals
+<h3>Complete Angular Developer in 2022: Zero to Mastery</h3>
+
 > * **Angular 13.3.9**
 > * **AngularFire 7.4.1**
 > * **Tailwind CSS 3.1.8**

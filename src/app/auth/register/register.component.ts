@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import IUser from 'src/app/contracts/user';
 
 import { AuthService } from 'src/app/services/auth.service';
+import { ConfirmPasswordValidators } from '../validators/confirm-password-validators';
+import { CheckEmailValidators } from '../validators/check-email-validators';
 
 
 /*
@@ -22,11 +24,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterComponent {
 
   // After injecting this service, we can start using its methods.
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private emailValidators: CheckEmailValidators) {
 
   }
 
-  
+
   /*
       { } The instance has one argument, which is an object of configuration options.
       { } We can configure this object to help angular understand what's inside the form.
@@ -41,7 +43,7 @@ export class RegisterComponent {
   */
 
   name = new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]);
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email = new FormControl('', [Validators.required, Validators.email], [this.emailValidators.validate]);
   age = new FormControl('', [Validators.required, Validators.min(18), Validators.max(120)]);
   password = new FormControl('', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)]);
   confirm_password = new FormControl('', [Validators.required]);
@@ -63,7 +65,7 @@ export class RegisterComponent {
       *ngIf="" → registerForm.controls.name.touched && registerForm.controls.name.dirty
                 && registerForm.controls.name.errors?.required
     */
-  });
+  }, [ConfirmPasswordValidators.match('password', 'confirm_password')]);
 
   /*
       We are going to be displaying an error for every rule.

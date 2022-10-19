@@ -4,6 +4,8 @@ import { ManageComponent } from './manage/manage.component';
 import { RouterModule } from '@angular/router';
 import { UploadComponent } from './upload/upload.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const redirectUnauthorizedToHome = () => redirectUnauthorizedTo('/');
 
@@ -19,7 +21,9 @@ const redirectUnauthorizedToHome = () => redirectUnauthorizedTo('/');
       { path: 'upload', component: UploadComponent, data: { authOnly: true, authGuardPipe: redirectUnauthorizedToHome }, canActivate: [AngularFireAuthGuard] },
       // path change decision
       { path: 'manage-clips', redirectTo: 'manage' },
-    ])
+    ]),
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class VideoModule { }

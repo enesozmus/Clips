@@ -28,7 +28,7 @@ export class TabsContainerComponent implements AfterContentInit {
       this.selectTab(this.tabs!.first);
     }
 
-    console.log(this.tabs); // → QueryList  → There are two tab components.
+    //console.log(this.tabs); // → QueryList  → There are two tab components.
     // ♫ We've successfully retrieved a list of tabs inside the container.
     // ♫ If we add more tabs, the decorator will always return the correct amount of tabs.
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ModalService } from '../services/modal.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,8 +15,7 @@ export class NavBarComponent {
   // *ngIf="!isAuthenticated"
   isAuthenticated: boolean = false;
 
-  constructor(public modalService: ModalService, public authService: AuthService,
-    private authFireService: AngularFireAuth) {
+  constructor(public modalService: ModalService, public authService: AuthService) {
     /*
         We will subscribe to the isAuthenticated$ observable from the AuthService.
 
@@ -41,12 +40,6 @@ export class NavBarComponent {
     // Users will not unexpectedly be redirected to a different page.
     $event.preventDefault();
     this.modalService.toggleModal('authentication');
-  }
-
-  async logout($event: Event) {
-
-    $event.preventDefault();
-    await this.authFireService.signOut();
   }
 
   /*

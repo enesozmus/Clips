@@ -32,7 +32,7 @@ export class BaseModalComponent implements OnInit, OnDestroy {
 
   // Angular will manage our dependencies.
   constructor(public modalService: ModalService, public elementRef: ElementRef) {
-    console.log(elementRef);
+    //console.log(elementRef);
   }
 
   ngOnInit(): void {

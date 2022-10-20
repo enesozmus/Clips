@@ -59,7 +59,7 @@ export class ModalService {
     //console.log(this.modals);
   }
 
-  unRegister(id: string){
+  unregister(id: string){
     /*
       The function must return a Boolean value.
       If we return 'true', the element will be added to the new array.

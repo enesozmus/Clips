@@ -6,13 +6,15 @@ import { UploadComponent } from './upload/upload.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditComponent } from './edit/edit.component';
 
 const redirectUnauthorizedToHome = () => redirectUnauthorizedTo('/');
 
 @NgModule({
   declarations: [
     ManageComponent,
-    UploadComponent
+    UploadComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,

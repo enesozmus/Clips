@@ -123,14 +123,14 @@ export class UploadComponent implements OnDestroy {
         this.showPercentage = false;
         /* Section Alert*/
 
-        // At the end of the function, we're going to create a timeout with a duration of 1000 milliseconds.
+        // At the end of the function, we're going to create a timeout with a duration of 1500 milliseconds.
         // We're not going to redirect the user until a second has passed.
         // We want to give them an opportunity to view the success message.
         setTimeout(() => {
           this.router.navigate([
             'clip', clipDocRef.id
           ])
-        }, 1000);
+        }, 1500);
       },
       error: (err) => {
 

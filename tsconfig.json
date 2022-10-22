@@ -1,8 +1,15 @@
+
+// It's the configuration file for TypeScript.
+// Angular will use this configuration file for production and development builds.
+// We're going to modify the compilerOptions → "types": [],
+// We're going to add the node package to this array.
+// By adding this value to the array, TypeScript shouldn't have a problem with FFmpeg
 {
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "types": ["node"],
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,

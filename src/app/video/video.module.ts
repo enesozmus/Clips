@@ -7,6 +7,7 @@ import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/comp
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
+import { SafeURLPipe } from '../pipes/safe-url.pipe';
 
 const redirectUnauthorizedToHome = () => redirectUnauthorizedTo('/');
 
@@ -14,7 +15,8 @@ const redirectUnauthorizedToHome = () => redirectUnauthorizedTo('/');
   declarations: [
     ManageComponent,
     UploadComponent,
-    EditComponent
+    EditComponent,
+    SafeURLPipe
   ],
   imports: [
     CommonModule,

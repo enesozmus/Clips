@@ -19,6 +19,8 @@ export class ClipService {
   // The property we've created will store the collection for the users uploads.
   // This step is optional, but type checking should always be a priority.
   public clipsCollection: AngularFirestoreCollection<IClip>;
+  //
+  pendingReq: boolean = false;
 
   constructor(
     private fireStore: AngularFirestore,
@@ -73,10 +75,15 @@ export class ClipService {
 
   //
   async deleteClip(clip: IClip) {
-    const clipRef = this.fireStorage.ref(`clips/${clip.fileName}`);
+    const clipRef = this.fireStorage.ref(`clips/${clip.fileName}`)
 
-    await clipRef.delete();
+    const screenshotRef = this.fireStorage.ref(
+      `screenshots/${clip.screenshotFileName}`
+    )
 
-    await this.clipsCollection.doc(clip.docID).delete();
+    await clipRef.delete()
+    await screenshotRef.delete()
+
+    await this.clipsCollection.doc(clip.docID).delete()
   }
 }
